@@ -18,7 +18,7 @@ func NewInMemoryDB() (DB, error) {
 }
 
 // GetAll returns a copy of the underlying store to avoid race conditions.
-func (db *inMemoryDB) ReadAll() (map[string]string, error) {
+func (db *inMemoryDB) GetAll() (map[string]string, error) {
 	db.lck.RLock()
 	defer db.lck.RUnlock()
 
@@ -30,7 +30,7 @@ func (db *inMemoryDB) ReadAll() (map[string]string, error) {
 }
 
 // Get returns the value for a given key if it exists; otherwise, it returns an error.
-func (db *inMemoryDB) Read(key string) (*string, error) {
+func (db *inMemoryDB) Get(key string) (*string, error) {
 	db.lck.RLock()
 	defer db.lck.RUnlock()
 
