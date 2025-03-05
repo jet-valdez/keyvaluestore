@@ -5,6 +5,9 @@ import (
 	"sync"
 )
 
+// sentinel error
+var ErrorNoSuchKey = errors.New("no such key")
+
 type inMemoryDB struct {
 	store map[string]string
 	lck   sync.RWMutex
