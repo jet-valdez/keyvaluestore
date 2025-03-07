@@ -40,6 +40,6 @@ func main() {
 
 	log.Printf("serving on port 8080")
 
-	err = http.ListenAndServe(":8080", router)
+	err = http.ListenAndServeTLS(":8080", "cert.pem", "key.pem", router)
 	log.Fatal(err)
 }
